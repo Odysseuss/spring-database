@@ -14,7 +14,7 @@ import com.odysseuss.springdatabase.entities.Officer;
 @Repository
 public class JdbcOfficerDAO implements OfficerDAO {
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
     public JdbcOfficerDAO(JdbcTemplate jdbcTemplate) {
@@ -24,20 +24,21 @@ public class JdbcOfficerDAO implements OfficerDAO {
 
     @Override
     public long count() {
-        // TODO Auto-generated method stub
-        return 0;
+        return jdbcTemplate.queryForObject("SELECT COUNT (*) from officers", Long.class);
     }
 
     @Override
     public void delete(Officer officer) {
         
+        jdbcTemplate.update("DELETE FROM officers WHERE id=?", officer.getId());
         
     }
 
     @Override
     public boolean existsById(Integer id) {
-        // TODO Auto-generated method stub
-        return false;
+        
+        return jdbcTemplate.queryForObject("SELECT EXISTS FROM officers WHERE id=?", Boolean.class, id);
+    
     }
 
     @Override
@@ -48,8 +49,13 @@ public class JdbcOfficerDAO implements OfficerDAO {
 
     @Override
     public Optional<Officer> findById(Integer id) {
-        // TODO Auto-generated method stub
-        return Optional.empty();
+        
+        if (!existsById(id)) {
+            return Optional.empty();
+        }
+
+        return Optional.of(jdbcTemplate.queryForObject("SELECT 1 FROM officers WHERE id=?", Officer.class, id));
+
     }
 
     @Override
