@@ -3,7 +3,7 @@ package com.odysseuss.springdatabase.dao;
 import java.util.List;
 import java.util.Optional;
 
-import com.odysseuss.springdatabase.dao.entities.Officer;
+import com.odysseuss.springdatabase.entities.Officer;
 
 public interface OfficerDAO {
 
@@ -16,5 +16,4 @@ public interface OfficerDAO {
     long count();
     void delete(Officer officer);
     boolean existsById(Integer id);
-    
 }

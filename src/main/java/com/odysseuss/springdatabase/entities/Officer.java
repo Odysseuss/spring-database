@@ -1,4 +1,4 @@
-package com.odysseuss.springdatabase.dao.entities;
+package com.odysseuss.springdatabase.entities;
 
 public class Officer {
     
