@@ -62,7 +62,8 @@ public class JdbcOfficerDAO implements OfficerDAO {
                                     resultSet.getString("first_name"),
                                     resultSet.getString("last_name"));
                     
-                }));
+                },
+                id));
 
     }
 
