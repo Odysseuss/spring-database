@@ -60,7 +60,7 @@ public class JdbcOfficerDAO implements OfficerDAO {
     @Override
     public List<Officer> findAll() {
         
-        return jdbcTemplate.query("SELECT * FROM officers WHERE", officerMapper);
+        return jdbcTemplate.query("SELECT * FROM officers", officerMapper);
                 
     }
 
