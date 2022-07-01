@@ -37,13 +37,13 @@ public class JdbcOfficerDAO implements OfficerDAO {
     @Override
     public boolean existsById(Integer id) {
         
-        return jdbcTemplate.queryForObject("SELECT EXISTS FROM officers WHERE id=?", Boolean.class, id);
+        return jdbcTemplate.queryForObject("SELECT EXISTS( SELECT 1 FROM officers WHERE id=?)", Boolean.class, id);
     
     }
 
     @Override
     public List<Officer> findAll() {
-        // TODO Auto-generated method stub
+        
         return null;
     }
 
