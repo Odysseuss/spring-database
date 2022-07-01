@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.odysseuss.springdatabase.entities.Officer;
+import com.odysseuss.springdatabase.entities.Rank;
 
 
 
@@ -54,7 +55,14 @@ public class JdbcOfficerDAO implements OfficerDAO {
             return Optional.empty();
         }
 
-        return Optional.of(jdbcTemplate.queryForObject("SELECT 1 FROM officers WHERE id=?", Officer.class, id));
+        return Optional.of(jdbcTemplate.queryForObject("SELECT * FROM officers WHERE id=?",
+                (resultSet, rowNum) -> {
+                    return new Officer(resultSet.getInt("id"),
+                                    Rank.valueOf(resultSet.getString("rank")),
+                                    resultSet.getString("first_name"),
+                                    resultSet.getString("last_name"));
+                    
+                }));
 
     }
 

@@ -18,6 +18,14 @@ public class Officer {
         this.lastName = lastName;
     }
 
+    public Officer(Integer id, Rank rank, String firstName, String lastName) {
+        
+        this.id = id;
+        this.rank = rank;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public Integer getId() {
         return id;
     }

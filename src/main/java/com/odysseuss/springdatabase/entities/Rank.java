@@ -1,9 +1,14 @@
 package com.odysseuss.springdatabase.entities;
 
-public class Rank {
-    
+public enum Rank {
+    CAPTAIN ("CAPTAIN"),
+    ADMIRAL ("ADMIRAL");
 
-    public Rank() {
-
+    String value;
+    Rank(String value) {
+        this.value = value;
     }
 }
+    
+
+    
