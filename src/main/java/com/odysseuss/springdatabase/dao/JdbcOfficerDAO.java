@@ -45,7 +45,13 @@ public class JdbcOfficerDAO implements OfficerDAO {
     @Override
     public List<Officer> findAll() {
         
-        return null;
+        return jdbcTemplate.query("SELECT * FROM officers WHERE",
+                (resultSet, rowNum) -> {
+                    return new Officer(resultSet.getInt("id"),
+                                    Rank.valueOf(resultSet.getString("rank")),
+                                    resultSet.getString("first_name"),
+                                    resultSet.getString("last_name"));
+                });
     }
 
     @Override
