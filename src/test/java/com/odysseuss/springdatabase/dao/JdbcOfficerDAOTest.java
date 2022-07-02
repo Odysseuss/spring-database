@@ -82,7 +82,7 @@ public class JdbcOfficerDAOTest {
     @Test
     void testSave() {
 
-        Officer officer = new Officer(Rank.ADMIRAL, "Akbar", "Fishman");
+        Officer officer = new Officer(Rank.ADMIRAL, "Gial", "Ackbar");
         officer = dao.save(officer);
         assertNotNull(officer.getId());
 
